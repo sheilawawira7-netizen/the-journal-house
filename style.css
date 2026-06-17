@@ -1,0 +1,118 @@
+/* --- Brand Fonts & Colors --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap');
+
+:root {
+    --bg-cream: #fbf9f5;
+    --text-dark: #2c2520;
+    --accent-terracotta: #c88168;
+    --accent-sage: #94a684;
+    --accent-oat: #e6dfd3;
+    --accent-midnight: #1a2238;
+    --accent-gold: #d4af37;
+}
+
+body {
+    background-color: var(--bg-cream);
+    color: var(--text-dark);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .serif-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+}
+
+/* --- Layout Architecture --- */
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.flex-grid {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.col {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* --- Atmospheric Components --- */
+.hero-section {
+    text-align: center;
+    padding: 120px 20px;
+    background: radial-gradient(circle at center, rgba(251,249,245,0) 0%, rgba(244,238,228,0.5) 100%);
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.whisper-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #5a4f46;
+}
+
+/* --- Elegant Interactive Buttons --- */
+.whatsapp-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--text-dark);
+    padding: 14px 28px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.whatsapp-btn:hover {
+    background-color: var(--text-dark);
+    color: var(--bg-cream);
+    letter-spacing: 3px;
+}
+
+.sub-btn-text {
+    display: block;
+    font-size: 0.75rem;
+    color: #7a6e65;
+    margin-top: 8px;
+}
+
+/* --- Elegant Tables --- */
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+
+.spec-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--accent-oat);
+}
+
+.spec-table td:first-child {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    width: 30%;
+}
