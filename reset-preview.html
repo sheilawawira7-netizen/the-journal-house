@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inside Look - The Reset Journal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #fffaf5;
+            color: #3d332a;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .preview-header {
+            text-align: center;
+            padding: 50px 20px 30px;
+        }
+
+        .preview-header h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .preview-header p {
+            font-style: italic;
+            color: #7a6e65;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Showcase Grid */
+        .showcase-container {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .page-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(61, 51, 42, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        @media (min-width: 768px) {
+            .page-row {
+                flex-direction: row;
+                min-height: 450px;
+            }
+            .page-row:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+        }
+
+        .page-image-container {
+            flex: 1;
+            background: #fdfaf7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .page-image-container img {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .page-details {
+            flex: 1;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .page-details h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-top: 0;
+            color: #3d332a;
+        }
+
+        .page-details p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #554a40;
+        }
+
+        .bottom-nav {
+            text-align: center;
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            color: #7a6e65;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: 1px solid #d4cabc;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #3d332a;
+            color: #ffffff;
+            border-color: #3d332a;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="preview-header">
+        <h1>Inside The Reset Journal</h1>
+        <p>Take a gentle walk through a few selected pages designed to bring structure and peace to your daily rhythm.</p>
+    </header>
+
+    <main class="showcase-container">
+
+        <div class="page-row">
+            <div class="page-image-container">
+                <img src="663811.jpg" alt="Welcome Home Page">
+            </div>
+            <div class="page-details">
+                <h2>A Gentle Beginning</h2>
+                <p>Every journey needs a soft landing space. The introduction page sets a rule-free sanctuary grounded in honesty, grace, and steady self-love to anchor your thoughts as you step inside.</p>
+            </div>
+        </div>
+
+        <div class="page-row">
+            <div class="page-image-container">
+                <img src="661460.jpg" alt="Check-In Page">
+            </div>
+            <div class="page-details">
+                <h2>Emotional Horizons</h2>
+                <p>An expansive two-page canvas mapping out how your heart truly feels. Track subtle changes, unpack raw sentiments, highlight hidden personal celebrations, and hold onto quiet daily reminders.</p>
+            </div>
+        </div>
+
+        <div class="page-row">
+            <div class="page-image-container">
+                <img src="663814.jpg" alt="Weekly Plan Page">
+            </div>
+            <div class="page-details">
+                <h2>Intentional Living</h2>
+                <p>Move away from overwhelming schedules. This layout empowers you to pick three core seasonal priorities while mapping out your weekly timeline alongside gentle choices for discipline, rest, and balance.</p>
+            </div>
+        </div>
+
+        <div class="page-row">
+            <div class="page-image-container">
+                <img src="663820.jpg" alt="Short Check In Page">
+            </div>
+            <div class="page-details">
+                <h2>No Filter Check-Ins</h2>
+                <p>For those fast-paced days where complexity needs simple clarity. A minimalist layout letting you vent exactly what is taking up real estate in your mind without hesitation.</p>
+            </div>
+        </div>
+
+        <div class="page-row">
+            <div class="page-image-container">
+                <img src="663817.jpg" alt="Money Moves Page">
+            </div>
+            <div class="page-details">
+                <h2>Mindful Abundance</h2>
+                <p>Aligning financial stability with intentional living. Seamlessly track incoming funds and daily expenses under a beautifully designed tracker crafted to capture your target savings goals clearly.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="bottom-nav">
+        <a href="index.html" class="nav-btn">← Return to Foyer</a>
+        <a href="library.html" class="nav-btn">View All Collections →</a>
+    </div>
+
+</body>
+</html>
