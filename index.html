@@ -36,21 +36,48 @@
     .hero h1 em { color:var(--clay); font-weight:500; }
     .hero .lead { max-width:500px; margin:22px 0 30px; color:var(--muted); font-size:1.05rem; }
     .hero-actions { display:flex; flex-wrap:wrap; gap:12px; }
-    .hero-art { position:relative; height:420px; }
+    .hero-art { position:relative; height:420px; perspective: 1000px; }
     .circle { position:absolute; width:380px; height:380px; top:20px; left:50%; transform:translateX(-50%); background:#dbe1d3; border-radius:50%; }
-    .journal { position:absolute; top:47px; left:50%; width:236px; height:329px; padding:25px; transform:translateX(-48%) rotate(8deg); border-radius:5px 13px 13px 5px; background:#627869; box-shadow:-13px 0 #4f6256, 22px 28px 35px rgba(38,53,46,.2); color:#f8f1df; }
-    .journal:after { content:""; position:absolute; inset:12px; border:1px solid rgba(255,253,248,.35); border-radius:2px; }
-    .journal .cover { position:relative; z-index:1; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
-    .journal .sun { width:40px; height:40px; margin-bottom:20px; border:2px solid #f2c770; border-radius:50%; box-shadow:0 -11px 0 -9px #f2c770, 0 11px 0 -9px #f2c770, 11px 0 0 -9px #f2c770, -11px 0 0 -9px #f2c770; }
-    .journal strong { font:500 2.25rem/1 "Playfair Display",serif; }
-    .journal span { margin-top:10px; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase; }
+    
+    /* Animated Flipping Book Showcase */
+    .journal-flip-container {
+      position: absolute;
+      top: 47px;
+      left: 50%;
+      width: 236px;
+      height: 329px;
+      transform: translateX(-48%) rotate(6deg);
+      cursor: pointer;
+    }
+    .journal-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 5px 13px 13px 5px;
+      box-shadow: -13px 0 #4f6256, 22px 28px 35px rgba(38,53,46,.2);
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #627869;
+    }
+    .journal-card.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      z-index: 2;
+    }
+    .journal-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
     .spark { position:absolute; width:80px; height:80px; border:1px solid var(--clay); border-radius:50%; right:4%; bottom:18px; }
     section { padding:94px 0; }
     .intro { max-width:630px; margin:0 auto 45px; text-align:center; }
     .intro h2 { font-size:clamp(2.3rem, 4vw, 3.5rem); }
     .intro p:last-child { margin:14px auto 0; color:var(--muted); }
     .collections { background:#fff; }
-    .products { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+    .products { display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
     .product { overflow:hidden; border:1px solid var(--line); background:var(--paper); display:flex; flex-direction:column; }
     .product-image { height:320px; overflow:hidden; background:var(--cream); position:relative; }
     .product-image img { width:100%; height:100%; object-fit:cover; transition:transform .5s; }
@@ -98,6 +125,7 @@
     footer { padding:33px 0; background:var(--ink); color:#dce2d8; font-size:.8rem; }
     .foot { display:flex; justify-content:space-between; gap:20px; align-items:center; }
     .foot strong { color:#fff; font-family:"Playfair Display",serif; font-size:1.1rem; }
+    @media (max-width:1024px) { .products { grid-template-columns:1fr 1fr; } }
     @media (max-width:760px) { 
       nav a:not(.nav-order) { display:none; } 
       .nav { height:68px; } 
@@ -105,7 +133,7 @@
       .hero-grid { padding:70px 0 35px; } 
       .hero-art { height:350px; } 
       .circle { width:320px; height:320px; } 
-      .journal { transform:translateX(-48%) rotate(6deg) scale(.88); transform-origin:top center; } 
+      .journal-flip-container { transform:translateX(-48%) rotate(6deg) scale(.88); transform-origin:top center; } 
       .products { grid-template-columns:1fr; } 
       .room-grid { grid-template-columns:1fr 1fr; } 
       .room:last-child { grid-column:span 2; } 
@@ -125,7 +153,18 @@
   <main id="top">
     <section class="hero"><div class="wrap hero-grid">
       <div><p class="eyebrow">Journals for all ages</p><h1>Make room for <em>your</em> story.</h1><p class="lead">Beautifully designed journals to help you reflect, dream, heal, and grow—one page at a time.</p><div class="hero-actions"><a class="button" href="#collections">Browse journals</a><a class="button light" href="#our-story">Our story</a></div></div>
-      <div class="hero-art" aria-label="Illustration of a green journal"><div class="circle"></div><div class="journal"><div class="cover"><div class="sun"></div><strong>A place<br>to begin</strong><span>The Journal House</span></div></div><div class="spark"></div></div>
+      <div class="hero-art" aria-label="Interactive Journal Covers Showcase">
+        <div class="circle"></div>
+        <div class="journal-flip-container" onclick="nextHeroJournal()" title="Click to flip cover">
+          <div class="journal-card active">
+            <img src="733364.png" alt="Little Dreams Journal Cover">
+          </div>
+          <div class="journal-card">
+            <img src="746750.jpg" alt="Becoming Me Journal Cover">
+          </div>
+        </div>
+        <div class="spark"></div>
+      </div>
     </div></section>
     
     <section id="collections" class="collections"><div class="wrap">
@@ -135,7 +174,7 @@
         <!-- Product 1: Little Dreams -->
         <article class="product">
           <div class="product-image">
-            <img src="723456.jpg" alt="Little Dreams Journal Cover">
+            <img src="733364.png" alt="Little Dreams Journal Cover">
           </div>
           <div class="product-copy">
             <span class="tag">Dream room · Ages 8–12</span>
@@ -151,7 +190,26 @@
           </div>
         </article>
 
-        <!-- Product 2: The Reset Journal -->
+        <!-- Product 2: Becoming Me -->
+        <article class="product">
+          <div class="product-image">
+            <img src="746750.jpg" alt="Becoming Me Journal Cover">
+          </div>
+          <div class="product-copy">
+            <span class="tag">Becoming room</span>
+            <h3>Becoming Me</h3>
+            <p>Figuring it out one page at a time—collaged moments, thoughts, and self-discovery.</p>
+            <div class="product-footer">
+              <span class="price">KSh 2,200</span>
+              <div class="actions-group">
+                <button class="preview-btn" onclick="openModal('modal-becoming')">View Inside</button>
+                <a class="text-link" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20the%20Becoming%20Me%20journal." target="_blank" rel="noopener">Order →</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3: The Reset Journal -->
         <article class="product">
           <div class="product-image">
             <img src="673801.png" alt="The Reset Journal Cover">
@@ -170,7 +228,7 @@
           </div>
         </article>
 
-        <!-- Product 3: The Unwritten Things -->
+        <!-- Product 4: The Unwritten Things -->
         <article class="product">
           <div class="product-image">
             <img src="660230.png" alt="The Unwritten Things Journal Cover">
@@ -201,10 +259,27 @@
           <h3>Little Dreams Journal</h3>
         </div>
         <div class="preview-body">
-          <img class="preview-page-img" src="723456.jpg" alt="Little Dreams Interior Page Preview">
+          <img class="preview-page-img" src="733364.png" alt="Little Dreams Interior Page Preview">
           <div class="preview-details">
             <p>Designed with intentional layouts, gentle prompts, and fun daily check-ins that encourage kids to express their thoughts, set small goals, and build positive reflection habits.</p>
             <a class="button" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20the%20Little%20Dreams%20journal." target="_blank" rel="noopener">Order This Journal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-becoming" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" onclick="closeModal('modal-becoming')">&times;</button>
+        <div class="preview-header">
+          <span class="tag">Inside Preview · Becoming Room</span>
+          <h3>Becoming Me Journal</h3>
+        </div>
+        <div class="preview-body">
+          <img class="preview-page-img" src="746750.jpg" alt="Becoming Me Interior Page Preview">
+          <div class="preview-details">
+            <p>Filled with aesthetic mood boards, creative goal trackers, and open reflection spaces designed to help you document your growth journey and focus on what truly matters to you.</p>
+            <a class="button" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20the%20Becoming%20Me%20journal." target="_blank" rel="noopener">Order This Journal</a>
           </div>
         </div>
       </div>
@@ -251,6 +326,19 @@
   <footer><div class="wrap foot"><strong>The Journal House</strong><span>© 2026 The Journal House. All rights reserved.</span><a href="https://wa.me/254713965672" target="_blank" rel="noopener">WhatsApp: 0713 965 672</a></div></footer>
   
   <script>
+    let currentHeroIdx = 0;
+    const heroCards = document.querySelectorAll('.journal-card');
+    
+    function nextHeroJournal() {
+      if (!heroCards.length) return;
+      heroCards[currentHeroIdx].classList.remove('active');
+      currentHeroIdx = (currentHeroIdx + 1) % heroCards.length;
+      heroCards[currentHeroIdx].classList.add('active');
+    }
+
+    // Auto flip hero cards every 3 seconds
+    setInterval(nextHeroJournal, 3000);
+
     function joinList(event) { 
       event.preventDefault(); 
       const email = document.getElementById('email').value; 
