@@ -1,215 +1,582 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inside Look - The Reset Journal</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            background-color: #fffaf5;
-            color: #3d332a;
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Journal House — a quiet space for your thoughts, dreams, and healing.">
+  <title>The Journal House | Every story deserves a home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root { 
+      --bg-ivory: #FAF7F2; 
+      --bg-linen: #F3EDE4; 
+      --charcoal: #3E3A36; 
+      --terracotta: #C87A5A; 
+      --terracotta-hover: #b06547;
+      --sage: #A9B8A0; 
+      --dusty-rose: #D7B4B2; 
+      --border-line: #E8DFD1; 
+      --text-muted: #6C665F; 
+      --card-shadow: 0 10px 25px rgba(62, 58, 54, 0.08);
+    }
 
-        .preview-header {
-            text-align: center;
-            padding: 50px 20px 30px;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { 
+      margin: 0; 
+      color: var(--charcoal); 
+      background: var(--bg-ivory); 
+      font-family: "DM Sans", sans-serif; 
+      line-height: 1.6; 
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    .eyebrow { 
+      margin: 0 0 10px; 
+      color: var(--terracotta); 
+      font-size: .78rem; 
+      font-weight: 700; 
+      letter-spacing: .16em; 
+      text-transform: uppercase; 
+    }
+    h1, h2, h3 { font-family: "Playfair Display", serif; line-height: 1.15; margin: 0; color: var(--charcoal); }
 
-        .preview-header h1 {
-            font-size: 2.5rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
+    /* Top Announcement Bar */
+    .topbar { 
+      background: var(--bg-linen); 
+      color: var(--charcoal); 
+      text-align: center; 
+      padding: 10px 20px; 
+      font-size: .82rem; 
+      border-bottom: 1px solid var(--border-line);
+      font-style: italic;
+    }
 
-        .preview-header p {
-            font-style: italic;
-            color: #7a6e65;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    /* Navigation */
+    header { 
+      position: sticky; 
+      z-index: 10; 
+      top: 0; 
+      border-bottom: 1px solid var(--border-line); 
+      background: rgba(250, 247, 242, 0.95); 
+      backdrop-filter: blur(10px); 
+    }
+    .nav { height: 76px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .brand { text-decoration: none; font: 600 1.4rem "Playfair Display", serif; letter-spacing: .01em; color: var(--charcoal); }
+    .brand small { display: block; margin-top: -2px; color: var(--terracotta); font: 700 .58rem "DM Sans", sans-serif; letter-spacing: .18em; text-transform: uppercase; }
+    nav { display: flex; align-items: center; gap: 26px; }
+    nav a { font-size: .85rem; font-weight: 600; text-decoration: none; color: var(--charcoal); }
+    
+    /* Buttons */
+    .nav-order, .button { 
+      display: inline-flex; 
+      justify-content: center; 
+      align-items: center; 
+      min-height: 46px; 
+      border: 0; 
+      border-radius: 24px;
+      cursor: pointer; 
+      text-decoration: none; 
+      font: 700 .78rem "DM Sans", sans-serif; 
+      letter-spacing: .08em; 
+      text-transform: uppercase; 
+      transition: all .25s ease; 
+    }
+    .nav-order { min-height: 40px; padding: 0 18px; background: var(--terracotta); color: white; }
+    .button { padding: 0 26px; background: var(--terracotta); color: white; box-shadow: 0 4px 12px rgba(200, 122, 90, 0.25); }
+    .button:hover, .nav-order:hover { transform: translateY(-2px); background: var(--charcoal); color: white; }
+    .button.light { background: transparent; border: 1px solid var(--charcoal); color: var(--charcoal); box-shadow: none; }
+    .button.light:hover { background: var(--charcoal); color: white; }
+    
+    /* Hero Section */
+    .hero { overflow: hidden; background: var(--bg-ivory); position: relative; padding: 40px 0 60px; }
+    .hero-grid { min-height: 540px; display: grid; grid-template-columns: 1.05fr .95fr; align-items: center; gap: 50px; }
+    .hero h1 { max-width: 630px; font-size: clamp(2.8rem, 5.5vw, 4.8rem); letter-spacing: -.03em; }
+    .hero h1 em { color: var(--terracotta); font-style: italic; font-weight: 400; }
+    .hero .lead { max-width: 480px; margin: 22px 0 32px; color: var(--text-muted); font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    
+    .hero-art { position: relative; height: 420px; perspective: 1000px; }
+    .circle { position: absolute; width: 360px; height: 360px; top: 30px; left: 50%; transform: translateX(-50%); background: var(--bg-linen); border-radius: 50%; border: 1px dashed var(--sage); }
+    
+    /* Flipping Book Showcase */
+    .journal-flip-container {
+      position: absolute;
+      top: 45px;
+      left: 50%;
+      width: 230px;
+      height: 320px;
+      transform: translateX(-48%) rotate(4deg);
+      cursor: pointer;
+    }
+    .journal-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 4px 12px 12px 4px;
+      box-shadow: -10px 0 #8b8073, 18px 22px 30px rgba(62,58,54,0.15);
+      overflow: hidden;
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      background: var(--bg-linen);
+    }
+    .journal-card.active { opacity: 1; transform: scale(1) translateY(0); z-index: 2; }
+    .journal-card img { width: 100%; height: 100%; object-fit: cover; }
+    
+    /* Sections General */
+    section { padding: 88px 0; }
+    .intro { max-width: 650px; margin: 0 auto 48px; text-align: center; }
+    .intro h2 { font-size: clamp(2.2rem, 3.8vw, 3.2rem); }
+    .intro p:last-child { margin: 14px auto 0; color: var(--text-muted); font-size: 1.02rem; }
 
-        /* Showcase Grid */
-        .showcase-container {
-            max-width: 1000px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-        }
+    /* Find Your Journal (Rooms) */
+    .find-your-journal { background: var(--bg-linen); border-top: 1px solid var(--border-line); border-bottom: 1px solid var(--border-line); }
+    .house-rooms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 30px; }
+    .room-card { 
+      background: var(--bg-ivory); 
+      padding: 32px; 
+      border-radius: 12px; 
+      border: 1px solid var(--border-line); 
+      box-shadow: var(--card-shadow);
+      transition: transform .3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .room-card:hover { transform: translateY(-4px); }
+    .room-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .room-card h3 { font-size: 1.6rem; margin-bottom: 8px; }
+    .room-card p { color: var(--text-muted); font-size: .95rem; margin: 0 0 20px; }
+    .room-tag { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--terracotta); }
 
-        .page-row {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #ffffff;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(61, 51, 42, 0.04);
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
+    /* Collections Section */
+    .collections { background: var(--bg-ivory); }
+    .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .product { 
+      overflow: hidden; 
+      border: 1px solid var(--border-line); 
+      border-radius: 12px;
+      background: var(--bg-ivory); 
+      display: flex; 
+      flex-direction: column; 
+      box-shadow: var(--card-shadow);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .product:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(62,58,54,0.12); }
+    .product-image { height: 310px; overflow: hidden; background: var(--bg-linen); position: relative; }
+    .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .product:hover img { transform: scale(1.04); }
+    .product-copy { padding: 22px; flex-grow: 1; display: flex; flex-direction: column; }
+    .product h3 { margin-top: 6px; font-size: 1.6rem; }
+    .product p { min-height: 48px; margin: 10px 0 18px; color: var(--text-muted); font-size: .9rem; }
+    .product-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-top: 16px; border-top: 1px solid var(--border-line); margin-top: auto; }
+    .price { font-weight: 700; font-size: .95rem; color: var(--charcoal); }
+    .actions-group { display: flex; gap: 12px; align-items: center; }
+    .preview-btn { background: none; border: none; color: var(--text-muted); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; padding: 0; text-decoration: underline; text-underline-offset: 4px; }
+    .preview-btn:hover { color: var(--terracotta); }
+    .text-link { color: var(--terracotta); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+    
+    .coming-soon-text { color: var(--terracotta); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-style: italic; }
+    .button.disabled { background: var(--border-line); color: var(--text-muted); cursor: not-allowed; box-shadow: none; }
 
-        @media (min-width: 768px) {
-            .page-row {
-                flex-direction: row;
-                min-height: 450px;
-            }
-            .page-row:nth-child(even) {
-                flex-direction: row-reverse;
-            }
-        }
+    /* Modals */
+    .modal { display: none; position: fixed; z-index: 100; inset: 0; background: rgba(62,58,54,0.75); backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px; }
+    .modal.active { display: flex; }
+    .modal-content { background: var(--bg-ivory); width: min(780px, 100%); max-height: 90vh; overflow-y: auto; border-radius: 12px; padding: 36px; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.25); border: 1px solid var(--border-line); }
+    .close-modal { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.6rem; cursor: pointer; color: var(--charcoal); }
+    .preview-header { margin-bottom: 20px; }
+    .preview-header h3 { font-size: 2.1rem; }
+    .preview-body { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 26px; align-items: center; }
+    .preview-page-img { width: 100%; max-height: 480px; object-fit: contain; border: 1px solid var(--border-line); border-radius: 8px; background: var(--bg-linen); }
+    .preview-details p { color: var(--text-muted); font-size: .95rem; margin-bottom: 22px; }
 
-        .page-image-container {
-            flex: 1;
-            background: #fdfaf7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            width: 100%;
-            box-sizing: border-box;
-        }
+    /* Story Section */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 70px; }
+    .quote { font: italic clamp(1.6rem, 2.8vw, 2.4rem)/1.35 "Playfair Display", serif; color: var(--charcoal); }
+    .about-copy { color: var(--text-muted); }
+    .about-copy p { margin: 0 0 18px; }
 
-        .page-image-container img {
-            max-width: 100%;
-            max-height: 500px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
+    /* Mailing List Section */
+    .join { padding: 76px 0; background: var(--bg-linen); border-top: 1px solid var(--border-line); }
+    .join-grid { display: grid; grid-template-columns: 1fr auto; gap: 50px; align-items: center; }
+    .join h2 { font-size: clamp(2.2rem, 3.8vw, 3.2rem); }
+    .join p:not(.eyebrow) { margin: 12px 0 0; color: var(--text-muted); }
+    .signup { display: flex; width: min(100%, 440px); border-bottom: 1.5px solid var(--charcoal); }
+    .signup input { width: 100%; border: 0; outline: 0; background: transparent; padding: 14px 5px; font: inherit; color: var(--charcoal); }
+    .signup button { border: 0; background: transparent; color: var(--terracotta); cursor: pointer; font: 700 .75rem "DM Sans", sans-serif; letter-spacing: .1em; text-transform: uppercase; }
 
-        .page-details {
-            flex: 1;
-            padding: 40px;
-            box-sizing: border-box;
-        }
+    /* Footer */
+    footer { padding: 48px 0 36px; background: var(--charcoal); color: var(--bg-linen); font-size: .85rem; }
+    .foot { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .foot strong { color: #fff; font-family: "Playfair Display", serif; font-size: 1.25rem; display: block; }
+    .foot-quote { font-style: italic; color: var(--sage); margin-top: 4px; font-size: .88rem; }
+    .foot a { color: var(--bg-linen); text-decoration: underline; text-underline-offset: 3px; }
 
-        .page-details h2 {
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-top: 0;
-            color: #3d332a;
-        }
-
-        .page-details p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #554a40;
-        }
-
-        .bottom-nav {
-            text-align: center;
-            margin-bottom: 60px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .nav-btn {
-            text-decoration: none;
-            color: #7a6e65;
-            font-size: 1rem;
-            padding: 10px 20px;
-            border: 1px solid #d4cabc;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            background: #3d332a;
-            color: #ffffff;
-            border-color: #3d332a;
-        }
-    </style>
+    @media (max-width: 1024px) { 
+      .products { grid-template-columns: 1fr 1fr; } 
+      .house-rooms-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 760px) { 
+      nav a:not(.nav-order) { display: none; } 
+      .nav { height: 68px; } 
+      .hero-grid, .about-grid, .join-grid, .house-rooms-grid { grid-template-columns: 1fr; gap: 30px; } 
+      .hero-grid { padding: 40px 0 20px; } 
+      .hero-art { height: 350px; } 
+      .circle { width: 300px; height: 300px; } 
+      .journal-flip-container { transform: translateX(-48%) rotate(4deg) scale(.85); transform-origin: top center; } 
+      .products { grid-template-columns: 1fr; } 
+      section { padding: 60px 0; } 
+      .foot { flex-direction: column; align-items: flex-start; } 
+      .preview-body { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-
-    <header class="preview-header">
-        <h1>Inside The Reset Journal</h1>
-        <p>Take a gentle walk through a few selected pages designed to bring structure and peace to your daily rhythm.</p>
-    </header>
-
-    <main class="showcase-container">
-
-        <div class="page-row">
-            <div class="page-image-container">
-                <img src="663811.jpg" alt="Welcome Home Page">
-            </div>
-            <div class="page-details">
-                <h2>A Gentle Beginning</h2>
-                <p>Every journey needs a soft landing space. The introduction page sets a rule-free sanctuary grounded in honesty, grace, and steady self-love to anchor your thoughts as you step inside.</p>
-            </div>
-        </div>
-
-        <div class="page-row">
-            <div class="page-image-container">
-                <img src="661460.jpg" alt="Check-In Page">
-            </div>
-            <div class="page-details">
-                <h2>Emotional Horizons</h2>
-                <p>An expansive two-page canvas mapping out how your heart truly feels. Track subtle changes, unpack raw sentiments, highlight hidden personal celebrations, and hold onto quiet daily reminders.</p>
-            </div>
-        </div>
-
-        <div class="page-row">
-            <div class="page-image-container">
-                <img src="663814.jpg" alt="Weekly Plan Page">
-            </div>
-            <div class="page-details">
-                <h2>Intentional Living</h2>
-                <p>Move away from overwhelming schedules. This layout empowers you to pick three core seasonal priorities while mapping out your weekly timeline alongside gentle choices for discipline, rest, and balance.</p>
-            </div>
-        </div>
-
-        <div class="page-row">
-            <div class="page-image-container">
-                <img src="663820.jpg" alt="Short Check In Page">
-            </div>
-            <div class="page-details">
-                <h2>No Filter Check-Ins</h2>
-                <p>For those fast-paced days where complexity needs simple clarity. A minimalist layout letting you vent exactly what is taking up real estate in your mind without hesitation.</p>
-            </div>
-        </div>
-
-        <div class="page-row">
-            <div class="page-image-container">
-                <img src="663817.jpg" alt="Money Moves Page">
-            </div>
-            <div class="page-details">
-                <h2>Mindful Abundance</h2>
-                <p>Aligning financial stability with intentional living. Seamlessly track incoming funds and daily expenses under a beautifully designed tracker crafted to capture your target savings goals clearly.</p>
-            </div>
-        </div>
-<!-- Page 6: Colour, Breathe, Release -->
-        <div class="page-row">
-            <div class="page-image-container">
-                <img src="664905.jpg" alt="Colour, Breathe, Release Page">
-            </div>
-            <div class="page-details">
-                <h2>Artistic Meditations</h2>
-                <p>A serene, creative pause designed to help you calm your mind, one colour at a time. This therapeutic coloring space features intricate botanical artwork and powerful affirmations to help you actively release what no longer serves you and protect your peace.</p>
-            </div>
-        </div>
-    </main>
-
-    <!-- Purchase / Order Section -->
-    <div class="order-section" style="text-align: center; max-width: 600px; margin: 40px auto 60px; padding: 30px; background: #ffffff; border-radius: 16px; box-shadow: 0 8px 24px rgba(61, 51, 42, 0.04); border: 1px solid rgba(212, 175, 55, 0.2);">
-        <h2 style="font-weight: 400; color: #3d332a; margin-top: 0;">Bring The Reset Journal Home</h2>
-        <p style="font-size: 1.3rem; color: #bfa34c; font-weight: bold; margin: 10px 0 20px;">KSh 2,000</p>
-        <p style="color: #554a40; margin-bottom: 25px; line-height: 1.6;">Ready to start your structured journey of gentle self-discovery? Tap below to secure your copy directly via WhatsApp.</p>
-        <a href="https://wa.me/254713965672?text=Hello!%20I%20would%20like%20to%20order%20The%20Reset%20Journal." 
-           target="_blank" 
-           style="display: inline-block; background: #25D366; color: white; text-decoration: none; padding: 14px 30px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); transition: transform 0.2s ease;">
-           💬 Order via WhatsApp
-        </a>
+  <div class="topbar">🌿 Walking into a quiet independent bookshop on a rainy afternoon...</div>
+  
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top">The Journal House<small>Hold your story</small></a>
+      <nav>
+        <a href="#find-your-journal">The Rooms</a>
+        <a href="#collections">Collections</a>
+        <a href="#our-story">Our Story</a>
+        <a class="nav-order" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">Order on WhatsApp</a>
+      </nav>
     </div>
-    <div class="bottom-nav">
-        <a href="index.html" class="nav-btn">← Return to Foyer</a>
-        <a href="library.html" class="nav-btn">View All Collections →</a>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">✨ Thoughtful Journals For Every Chapter</p>
+          <h1>Make room for <em>your</em> story.</h1>
+          <p class="lead">Warm, guided spaces to help you reflect, dream, heal, and grow—one paper page at a time.</p>
+          <div class="hero-actions">
+            <a class="button" href="#find-your-journal">Find Your Journal</a>
+            <a class="button light" href="#our-story">Our Story</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-label="Interactive Journal Showcase">
+          <div class="circle"></div>
+          <div class="journal-flip-container" onclick="nextHeroJournal()" title="Click to flip cover">
+            <div class="journal-card active">
+              <img src="733364.jpg" alt="Little Dreams Journal Cover">
+            </div>
+            <div class="journal-card">
+              <img src="746750.jpg" alt="Becoming Me Journal Cover">
+            </div>
+            <div class="journal-card">
+              <img src="673801.png" alt="The Reset Journal Cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Find Your Journal (House Rooms Concept) -->
+    <section id="find-your-journal" class="find-your-journal">
+      <div class="wrap">
+        <div class="intro">
+          <p class="eyebrow">🌿 Welcome Inside</p>
+          <h2>Find Your Journal</h2>
+          <p>Step inside our house. Each collection lives in a dedicated room crafted for where you are right now.</p>
+        </div>
+        <div class="house-rooms-grid">
+          
+          <div class="room-card">
+            <div>
+              <span class="room-icon">🏡</span>
+              <h3>The Reset Room</h3>
+              <p>For fresh starts, untangling chaotic thoughts, and creating gentle structure for your daily priorities.</p>
+            </div>
+            <span class="room-tag">Featured · The Reset Journal</span>
+          </div>
+
+          <div class="room-card">
+            <div>
+              <span class="room-icon">🌸</span>
+              <h3>The Unwritten Things Room</h3>
+              <p>For quiet thoughts, emotional release, poetry reflections, and letters you never sent.</p>
+            </div>
+            <span class="room-tag">Featured · The Unwritten Things</span>
+          </div>
+
+          <div class="room-card">
+            <div>
+              <span class="room-icon">✨</span>
+              <h3>The Becoming Me Room</h3>
+              <p>A collage-style safe space for teenagers and young adults discovering who they truly are.</p>
+            </div>
+            <span class="room-tag">Coming Soon · Becoming Me</span>
+          </div>
+
+          <div class="room-card">
+            <div>
+              <span class="room-icon">🌈</span>
+              <h3>The Little Dreams Room</h3>
+              <p>A playful, creative space where children's imaginations, daily moods, and big dreams can grow.</p>
+            </div>
+            <span class="room-tag">Coming Soon · Little Dreams</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Collections -->
+    <section id="collections" class="collections">
+      <div class="wrap">
+        <div class="intro">
+          <p class="eyebrow">Explore The Shelves</p>
+          <h2>The Full Collection</h2>
+          <p>Hand-crafted pages and creative essentials waiting for someone to take them home.</p>
+        </div>
+        <div class="products">
+          
+          <!-- Product 1: Little Dreams -->
+          <article class="product">
+            <div class="product-image">
+              <img src="733364.jpg" alt="Little Dreams Journal Cover">
+            </div>
+            <div class="product-copy">
+              <span class="eyebrow" style="color:#6A9AB0;">Dream Room · Ages 8–12</span>
+              <h3>Little Dreams</h3>
+              <p>A magical place for big imaginations, positive habits, and small daily adventures.</p>
+              <div class="product-footer">
+                <span class="price">KSh 1,800</span>
+                <div class="actions-group">
+                  <button class="preview-btn" onclick="openModal('modal-dreams')">View Inside</button>
+                  <span class="coming-soon-text">Coming Soon</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 2: Becoming Me -->
+          <article class="product">
+            <div class="product-image">
+              <img src="746750.jpg" alt="Becoming Me Journal Cover">
+            </div>
+            <div class="product-copy">
+              <span class="eyebrow" style="color:#B5838D;">Becoming Room · Teens</span>
+              <h3>Becoming Me</h3>
+              <p>Figuring it out one page at a time—collaged moments, playlists, and self-discovery.</p>
+              <div class="product-footer">
+                <span class="price">KSh 2,200</span>
+                <div class="actions-group">
+                  <button class="preview-btn" onclick="openModal('modal-becoming')">View Inside</button>
+                  <span class="coming-soon-text">Coming Soon</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 3: The Reset Journal -->
+          <article class="product">
+            <div class="product-image">
+              <img src="673801.png" alt="The Reset Journal Cover">
+            </div>
+            <div class="product-copy">
+              <span class="eyebrow" style="color:var(--sage);">Reset Room · Daily Pause</span>
+              <h3>The Reset Journal</h3>
+              <p>A gentle pause to reflect, balance your habits, and make space for what matters.</p>
+              <div class="product-footer">
+                <span class="price">KSh 2,000</span>
+                <div class="actions-group">
+                  <button class="preview-btn" onclick="openModal('modal-reset')">View Inside</button>
+                  <a class="text-link" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20The%20Reset%20Journal." target="_blank" rel="noopener">Order →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 4: The Unwritten Things -->
+          <article class="product">
+            <div class="product-image">
+              <img src="660230.jpeg" alt="The Unwritten Things Journal Cover">
+            </div>
+            <div class="product-copy">
+              <span class="eyebrow" style="color:var(--terracotta);">Unwritten Room · Healing</span>
+              <h3>The Unwritten Things</h3>
+              <p>A deeper guided journey for emotional reflection, healing, and personal truth.</p>
+              <div class="product-footer">
+                <span class="price">KSh 2,500</span>
+                <div class="actions-group">
+                  <button class="preview-btn" onclick="openModal('modal-unwritten')">View Inside</button>
+                  <a class="text-link" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20The%20Unwritten%20Things%20journal." target="_blank" rel="noopener">Order →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Product 5: Premium Color Pencils (NEW ADDITION) -->
+          <article class="product">
+            <div class="product-image">
+              <img src="747805.jpg" alt="M&G Colored Pencils Tube Set">
+            </div>
+            <div class="product-copy">
+              <span class="eyebrow" style="color:var(--terracotta);">Creative Tools · Accessories</span>
+              <h3>Colored Pencil Sets</h3>
+              <p>Vibrant, soft-lead color pencil sets in custom travel tubes—available in various pack sizes to bring your journal pages to life.</p>
+              <div class="product-footer">
+                <span class="price">KSh 200 – KSh 400</span>
+                <div class="actions-group">
+                  <a class="text-link" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20Colored%20Pencils." target="_blank" rel="noopener">Order →</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Preview Modals -->
+    <div id="modal-dreams" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" onclick="closeModal('modal-dreams')">&times;</button>
+        <div class="preview-header">
+          <span class="eyebrow" style="color:#6A9AB0;">Inside Preview · Ages 8–12</span>
+          <h3>Little Dreams Journal</h3>
+        </div>
+        <div class="preview-body">
+          <img class="preview-page-img" src="littledreams-preview.png" alt="Little Dreams Interior Page Preview">
+          <div class="preview-details">
+            <p>Packed with playful activities, color-by-numbers, word searches, daily mood check-ins, and creative drawing prompts designed to inspire young dreamers.</p>
+            <button class="button disabled" disabled>Coming Soon</button>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <div id="modal-becoming" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" onclick="closeModal('modal-becoming')">&times;</button>
+        <div class="preview-header">
+          <span class="eyebrow" style="color:#B5838D;">Inside Preview · Becoming Room</span>
+          <h3>Becoming Me Journal</h3>
+        </div>
+        <div class="preview-body">
+          <img class="preview-page-img" src="becoming-preview.png" alt="Becoming Me Interior Page Preview">
+          <div class="preview-details">
+            <p>Filled with aesthetic mood boards, monthly playlists, habit trackers, and open reflection spaces designed to help you document your growth journey.</p>
+            <button class="button disabled" disabled>Coming Soon</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-reset" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" onclick="closeModal('modal-reset')">&times;</button>
+        <div class="preview-header">
+          <span class="eyebrow" style="color:var(--sage);">Inside Preview · Reset Room</span>
+          <h3>The Reset Journal</h3>
+        </div>
+        <div class="preview-body">
+          <img class="preview-page-img" src="reset-preview.jpg" alt="The Reset Journal Interior Page Preview">
+          <div class="preview-details">
+            <p>Includes weekly reset structures, daily check-ins, coloring pages, and financial tracking layouts to help you slow down and focus on essential priorities.</p>
+            <a class="button" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20The%20Reset%20Journal." target="_blank" rel="noopener">Order This Journal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-unwritten" class="modal">
+      <div class="modal-content">
+        <button class="close-modal" onclick="closeModal('modal-unwritten')">&times;</button>
+        <div class="preview-header">
+          <span class="eyebrow" style="color:var(--terracotta);">Inside Preview · Unwritten Room</span>
+          <h3>The Unwritten Things</h3>
+        </div>
+        <div class="preview-body">
+          <img class="preview-page-img" src="unwritten-preview.jpg" alt="The Unwritten Things Interior Page Preview">
+          <div class="preview-details">
+            <p>Features deep poetry reflections, 'Letters Never Sent' writing prompts, personal check-ins, and gentle spaces created for emotional release and healing.</p>
+            <a class="button" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20The%20Unwritten%20Things%20journal." target="_blank" rel="noopener">Order This Journal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Story Section -->
+    <section id="our-story">
+      <div class="wrap about-grid">
+        <p class="quote">“Journaling is more than writing. It’s healing, remembering, dreaming, and becoming.”</p>
+        <div class="about-copy">
+          <p class="eyebrow">Our Story</p>
+          <h2>Every page is an invitation.</h2>
+          <p>At The Journal House, we believe everybody deserves a beautiful, warm space to put their thoughts into words. Our journals are created like home for every chapter of life.</p>
+          <a class="text-link" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%20have%20a%20question." target="_blank" rel="noopener">Ask us a question on WhatsApp →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mailing List -->
+    <section id="join" class="join">
+      <div class="wrap join-grid">
+        <div>
+          <p class="eyebrow">Stay Close</p>
+          <h2>A little inspiration,<br>straight to your inbox.</h2>
+          <p>Join our quiet mailing list for new releases, gentle prompts, and warm notes.</p>
+        </div>
+        <form class="signup" onsubmit="joinList(event)">
+          <input id="email" type="email" placeholder="Your email address" required aria-label="Your email address">
+          <button type="submit">Join list →</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <strong>The Journal House</strong>
+        <span class="foot-quote">Every story deserves a home.</span>
+      </div>
+      <span>© 2026 The Journal House. All rights reserved.</span>
+      <a href="https://wa.me/254713965672" target="_blank" rel="noopener">WhatsApp: 0713 965 672</a>
+    </div>
+  </footer>
+
+  <script>
+    let currentHeroIdx = 0;
+    const heroCards = document.querySelectorAll('.journal-card');
+    
+    function nextHeroJournal() {
+      if (!heroCards.length) return;
+      heroCards[currentHeroIdx].classList.remove('active');
+      currentHeroIdx = (currentHeroIdx + 1) % heroCards.length;
+      heroCards[currentHeroIdx].classList.add('active');
+    }
+
+    setInterval(nextHeroJournal, 3500);
+
+    function joinList(event) { 
+      event.preventDefault(); 
+      const email = document.getElementById('email').value; 
+      window.open('https://wa.me/254713965672?text=' + encodeURIComponent('Hello The Journal House, I would like to join the mailing list. My email is ' + email), '_blank'); 
+    }
+
+    function openModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.classList.remove('active');
+      }
+    }
+  </script>
 </body>
 </html>
