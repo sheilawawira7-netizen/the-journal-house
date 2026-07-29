@@ -100,8 +100,8 @@
     .close-modal { position:absolute; top:20px; right:20px; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--ink); }
     .preview-header { margin-bottom:20px; }
     .preview-header h3 { font-size:2rem; }
-    .preview-body { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:center; }
-    .preview-page-img { width:100%; height:340px; object-fit:cover; border:1px solid var(--line); border-radius:4px; background:var(--cream); }
+    .preview-body { display:grid; grid-template-columns:1.1fr 0.9fr; gap:24px; align-items:center; }
+    .preview-page-img { width:100%; max-height:480px; object-fit:contain; border:1px solid var(--line); border-radius:4px; background:var(--cream); }
     .preview-details p { color:var(--muted); font-size:.95rem; margin-bottom:20px; }
 
     .rooms { background:var(--ink); color:#f9f3e7; }
@@ -253,7 +253,7 @@
       </div>
     </div></section>
 
-    <!-- Preview Modals for Viewing Inside Pages -->
+    <!-- Preview Modals -->
     <div id="modal-dreams" class="modal">
       <div class="modal-content">
         <button class="close-modal" onclick="closeModal('modal-dreams')">&times;</button>
@@ -262,9 +262,9 @@
           <h3>Little Dreams Journal</h3>
         </div>
         <div class="preview-body">
-          <img class="preview-page-img" src="660235.jpeg" alt="Little Dreams Interior Page Preview">
+          <img class="preview-page-img" src="littledreams-preview.png" alt="Little Dreams Interior Page Preview">
           <div class="preview-details">
-            <p>Designed with intentional layouts, gentle prompts, and fun daily check-ins that encourage kids to express their thoughts, set small goals, and build positive reflection habits.</p>
+            <p>Packed with playful activities, color-by-numbers, word searches, daily mood check-ins, and creative drawing prompts designed to inspire young dreamers.</p>
             <a class="button" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20the%20Little%20Dreams%20journal." target="_blank" rel="noopener">Order This Journal</a>
           </div>
         </div>
@@ -279,9 +279,9 @@
           <h3>Becoming Me Journal</h3>
         </div>
         <div class="preview-body">
-          <img class="preview-page-img" src="661460.jpeg" alt="Becoming Me Interior Page Preview">
+          <img class="preview-page-img" src="becoming-preview.png" alt="Becoming Me Interior Page Preview">
           <div class="preview-details">
-            <p>Filled with aesthetic mood boards, creative goal trackers, and open reflection spaces designed to help you document your growth journey and focus on what truly matters to you.</p>
+            <p>Filled with aesthetic mood boards, monthly playlists, habit trackers, and open reflection spaces designed to help you document your growth journey and focus on what truly matters to you.</p>
             <a class="button" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20the%20Becoming%20Me%20journal." target="_blank" rel="noopener">Order This Journal</a>
           </div>
         </div>
@@ -296,9 +296,9 @@
           <h3>The Reset Journal</h3>
         </div>
         <div class="preview-body">
-          <img class="preview-page-img" src="663811.jpeg" alt="The Reset Journal Interior Page Preview">
+          <img class="preview-page-img" src="reset-preview.jpg" alt="The Reset Journal Interior Page Preview">
           <div class="preview-details">
-            <p>Includes weekly reset structures, mindful reflection prompts, and habit balance layouts to help you slow down, untangle chaotic thoughts, and focus on essential daily priorities.</p>
+            <p>Includes weekly reset structures, daily check-ins, coloring pages, and financial tracking layouts to help you slow down, untangle chaotic thoughts, and focus on essential daily priorities.</p>
             <a class="button" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20The%20Reset%20Journal." target="_blank" rel="noopener">Order This Journal</a>
           </div>
         </div>
@@ -313,9 +313,9 @@
           <h3>The Unwritten Things</h3>
         </div>
         <div class="preview-body">
-          <img class="preview-page-img" src="660231.jpeg" alt="The Unwritten Things Interior Page Preview">
+          <img class="preview-page-img" src="unwritten-preview.jpg" alt="The Unwritten Things Interior Page Preview">
           <div class="preview-details">
-            <p>Features deep guided questions, unprompted space for unrestrained emotional release, and thoughtful introspective exercises created for healing and self-discovery.</p>
+            <p>Features deep poetry reflections, 'Letters Never Sent' writing prompts, personal check-ins, and gentle spaces created for emotional release and healing.</p>
             <a class="button" href="https://wa.me/254713965672?text=Hello%20The%20Journal%20House%2C%20I%27d%20like%20to%20order%20The%20Unwritten%20Things%20journal." target="_blank" rel="noopener">Order This Journal</a>
           </div>
         </div>
@@ -339,7 +339,6 @@
       heroCards[currentHeroIdx].classList.add('active');
     }
 
-    // Auto flip hero cards every 3 seconds
     setInterval(nextHeroJournal, 3000);
 
     function joinList(event) { 
@@ -356,7 +355,6 @@
       document.getElementById(id).classList.remove('active');
     }
 
-    // Close modal when clicking outside content area
     window.onclick = function(event) {
       if (event.target.classList.contains('modal')) {
         event.target.classList.remove('active');
