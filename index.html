@@ -172,6 +172,25 @@
     .product-image { height: 260px; overflow: hidden; background: var(--bg-linen); position: relative; }
     .product-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
     .product:hover img { transform: scale(1.04); }
+
+    /* Fun Corner Cover Styling (Ensures full portrait book covers show cleanly) */
+    .fun-corner-cover {
+      height: 310px;
+      background: #18181B;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fun-corner-cover.safari-bg {
+      background: #FDF3D7;
+    }
+    .fun-corner-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
     .product-copy { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
     .product h3 { margin-top: 4px; font-size: 1.45rem; }
     .product p { min-height: 42px; margin: 8px 0 16px; color: var(--text-muted); font-size: .88rem; }
@@ -445,7 +464,7 @@
         <div class="intro">
           <p class="eyebrow">🧩 Games & Activities</p>
           <h2>The Fun Corner</h2>
-          <p>Explore our activity books, try out free sample pages, and test your knowledge with our quick quiz!</p>
+          <p>Explore our pocket-sized puzzle books, try out free sample pages, and test your knowledge with our quick quiz!</p>
         </div>
 
         <!-- Books Grid -->
@@ -453,13 +472,13 @@
           
           <!-- Gridlock -->
           <article class="product">
-            <div class="product-image">
-              <img src="fun-corner/covers/gridlock.jpg" alt="Gridlock Cover">
+            <div class="product-image fun-corner-cover">
+              <img src="932644.png" alt="Gridlock Cover">
             </div>
             <div class="product-copy">
-              <span class="eyebrow" style="color:var(--terracotta);">Activity Book</span>
+              <span class="eyebrow" style="color:var(--terracotta);">44 Puzzles · Pocket Size</span>
               <h3>Gridlock</h3>
-              <p>Challenging puzzles and grid adventures to keep your mind sharp.</p>
+              <p>Crosswords & sudoku for the long way home—keeping your mind sharp wherever you go.</p>
               <div class="product-footer">
                 <span class="price">KSh 700</span>
                 <div class="actions-group">
@@ -472,13 +491,13 @@
 
           <!-- Gridlock 2 -->
           <article class="product">
-            <div class="product-image">
-              <img src="fun-corner/covers/gridlock-2.jpg" alt="Gridlock 2 Cover">
+            <div class="product-image fun-corner-cover">
+              <img src="932643.png" alt="Gridlock 2 Cover">
             </div>
             <div class="product-copy">
-              <span class="eyebrow" style="color:var(--terracotta);">Activity Book</span>
+              <span class="eyebrow" style="color:var(--terracotta);">Volume 2 · 44 Puzzles</span>
               <h3>Gridlock 2</h3>
-              <p>The next level of mind-bending grid puzzles and challenges.</p>
+              <p>Harder crosswords & sudoku for the long way home—the next level of grid challenges.</p>
               <div class="product-footer">
                 <span class="price">KSh 700</span>
                 <div class="actions-group">
@@ -491,13 +510,13 @@
 
           <!-- Lost & Found -->
           <article class="product">
-            <div class="product-image">
-              <img src="fun-corner/covers/lost-and-found.jpg" alt="Lost & Found Cover">
+            <div class="product-image fun-corner-cover">
+              <img src="932642.png" alt="Lost & Found Cover">
             </div>
             <div class="product-copy">
-              <span class="eyebrow" style="color:var(--terracotta);">Activity Book</span>
+              <span class="eyebrow" style="color:var(--terracotta);">44 Puzzles · Pocket Size</span>
               <h3>Lost & Found</h3>
-              <p>Engaging search-and-find adventures and puzzles for curious minds.</p>
+              <p>Word search for the long way home—engaging letter grids for curious minds.</p>
               <div class="product-footer">
                 <span class="price">KSh 600</span>
                 <div class="actions-group">
@@ -510,13 +529,13 @@
 
           <!-- Who Knew? -->
           <article class="product">
-            <div class="product-image">
-              <img src="fun-corner/covers/who-knew.jpg" alt="Who Knew? Cover">
+            <div class="product-image fun-corner-cover">
+              <img src="932639.png" alt="Who Knew? Cover">
             </div>
             <div class="product-copy">
-              <span class="eyebrow" style="color:var(--terracotta);">Trivia Book</span>
+              <span class="eyebrow" style="color:var(--terracotta);">336 Questions · Pocket Size</span>
               <h3>Who Knew?</h3>
-              <p>Fascinating facts and trivia questions that will surprise everyone.</p>
+              <p>General knowledge for grown-ups—fascinating facts and trivia that will surprise everyone.</p>
               <div class="product-footer">
                 <span class="price">KSh 550</span>
                 <div class="actions-group">
@@ -529,13 +548,13 @@
 
           <!-- Puzzle Safari -->
           <article class="product">
-            <div class="product-image">
-              <img src="fun-corner/covers/puzzle-safari.jpg" alt="Puzzle Safari Cover">
+            <div class="product-image fun-corner-cover safari-bg">
+              <img src="932641.png" alt="Puzzle Safari Cover">
             </div>
             <div class="product-copy">
-              <span class="eyebrow" style="color:var(--terracotta);">Activity Book</span>
+              <span class="eyebrow" style="color:var(--terracotta);">Grades 4 to 13 · 48 Puzzles</span>
               <h3>Puzzle Safari</h3>
-              <p>Take a journey through wild wildlife-themed games and puzzles.</p>
+              <p>48 brain-busting puzzles and wildlife-themed adventures for young explorers.</p>
               <div class="product-footer">
                 <span class="price">KSh 600</span>
                 <div class="actions-group">
